@@ -57,7 +57,7 @@ unit JwsclSid;
 interface
 
 uses
-  SysUtils, Contnrs, Classes,
+  SysUtils, Contnrs, Classes, System.Types,
   JwaWindows, JwsclUtils, JwsclResource,
   JwsclTypes, JwsclExceptions, JwsclEnumerations,
   JwsclConstants,

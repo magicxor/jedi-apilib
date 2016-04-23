@@ -60,7 +60,7 @@ unit JwsclAcl;
 interface
 
 uses
-  SysUtils, Contnrs, Classes,
+  SysUtils, Contnrs, Classes, System.Types,
   jwaWindows,
   JwsclResource, JwsclUtils,
 

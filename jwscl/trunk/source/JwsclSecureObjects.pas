@@ -52,7 +52,7 @@ unit JwsclSecureObjects;
 
 interface
 
-uses SysUtils, Classes, Registry, Dialogs,
+uses SysUtils, Classes, Registry, Vcl.Dialogs,
   Contnrs {used for TQueue},
   jwaWindows, JwsclResource,
   JwsclTypes, JwsclExceptions, JwsclSid, JwsclAcl, JwsclToken,

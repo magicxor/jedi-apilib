@@ -1,50 +1,36 @@
-(*
-This demonstration computes and dumps the md5 hash of a given string.
+﻿(*
+  This demonstration computes and dumps the md5 hash of a given string.
 *)
 program SimpleMD5;
 
 {$APPTYPE CONSOLE}
 
 uses
+  JwsclTypes,
   SysUtils,
-  JwsclCryptProvider,
-  JwaWindows,
-  JwsclTypes;
-
-procedure Dump(Loc: Pointer; Len: Cardinal);
-var i: Integer;
-begin
-  for i := 1 to Len do
-  begin
-    Write(IntToHex(PByte(Loc)^, 2));
-    Inc(PByte(Loc), 1);
-  end;
-end;
+  Winapi.Windows,
+  JwHashWorker in 'JwHashWorker.pas';
 
 var
-  Hash: TJwHash;
-  {Warning: You get different md5 results for
-   AnsiString and WideString
-  In Delphi2009 you'll use WideString
-  }
-  Data: String;
-  HashVal: PByte;
-  Size: Cardinal;
+  Data: string;
+
+const
+  s1 = '▼ ▲ § ¶ ► ◄';
+  s2 = 'Ъ ъ Ё ё';
+
 begin
-  Hash:= TJwHash.Create(haMD5);
   try
-    Readln(Data);
-    Hash.HashData(@Data[1], Length(Data));
-    Size := Hash.GetHashLength;
-    GetMem(HashVal, Size);
-    try
-      Hash.RetrieveHash(HashVal, Size);
-      Dump(HashVal, Size);
-    finally
-      FreeMem(HashVal);
+    SetConsoleOutputCP(CP_UTF8);
+    Writeln('Windows console input in UTF8 is completely broken, so we will hash hardcoded strings');
+    Writeln('Hash "' + s1 + '" = ' + TJwHashWorker.GetHash(s1, haMD5, TEncoding.UTF8));
+    Writeln('Hash "' + s2 + '" = ' + TJwHashWorker.GetHash(s2, haMD5, TEncoding.UTF8));
+    Readln;
+  except
+    on E: Exception do
+    begin
+      Writeln(E.Classname, ':', E.Message);
+      Readln;
     end;
-  finally
-    Hash.Free;
   end;
-  Readln;
+
 end.

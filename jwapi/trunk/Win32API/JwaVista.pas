@@ -62,7 +62,7 @@ uses
 {$ELSE}
   JwaWinType, JwaWinNT,
 {$ENDIF}
-  ActiveX;
+  Winapi.ActiveX;
 
 
 implementation

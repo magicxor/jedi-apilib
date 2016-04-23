@@ -187,35 +187,35 @@ interface
 
 uses
 {$IFDEF USE_DELPHI_TYPES}
-  Windows,
+  Winapi.Windows,
 {$IFDEF HAS_UNIT_DATEUTILS}
-   DateUtils, //used by JwaWinSta.pas
+   System.DateUtils, //used by JwaWinSta.pas
 {$ENDIF}
 {$IFDEF JWA_INCLUDE_JWAADSTLB}
 {The following units may not be included because of problems}
 
 //OleUnits creates window handles that prevents SetThreadDesktop to work
-  OleServer, //[warning] requires D5 or higher - required by jwaAdsTLB.pas
-  OleCtrls,
+  Vcl.OleServer, //[warning] requires D5 or higher - required by jwaAdsTLB.pas
+  Vcl.OleCtrls,
 //JwaAdsTlb.pas and JwaDde.pas use these units and is therfore excluded
 {$ENDIF JWA_INCLUDE_JWAADSTLB}
 
   {$ENDIF USE_DELPHI_TYPES}
-  SysUtils, // TODO
+  System.SysUtils, // TODO
 
 {$IFDEF JWA_INCLUDE_SETUP_API}
-  CommCtrl, //used by SetupAPI.pas
+  Winapi.CommCtrl, //used by SetupAPI.pas
 {$ENDIF JWA_INCLUDE_SETUP_API}
 
-  ActiveX, Classes, ComObj
+  Winapi.ActiveX, System.Classes, System.Win.ComObj
 {$IFNDEF NOVCL}
-  ,Graphics,
-  StdVCL
+  , Vcl.Graphics,
+    System.Win.StdVCL
 {$ENDIF}
 
 {$IFDEF JWA_INCLUDE_SHELLAPI}
 {$IFDEF DELPHI6_UP}
-  ,msxml
+  , Winapi.msxml
 {$ENDIF DELPHI6_UP}
 {$ENDIF JWA_INCLUDE_SHELLAPI}
 

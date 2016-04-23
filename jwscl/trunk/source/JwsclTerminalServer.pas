@@ -81,7 +81,7 @@ unit JwsclTerminalServer;
 interface
 
 uses
-  Classes, Contnrs, SysUtils, Registry,
+  Classes, Contnrs, SysUtils, Registry, System.Types,
   JwaWindows,
   JwsclExceptions, JwsclResource, JwsclKnownSid, JwsclSid, JwsclTypes,
   JwsclUtils, JwsclToken, JwsclVersion, JwsclStrings;
